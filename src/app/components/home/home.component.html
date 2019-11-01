@@ -29,8 +29,8 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document" >
         
       <div class="modal-content" *ngIf="videoSeleccionado">
         <div class="modal-header">
@@ -40,7 +40,7 @@
             <iframe width="100%" height="300px" [src]="videoSeleccionado.resourceId.videoId | domseguro" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger btn-block" (click)="cerrarModal()" >Close</button>
+          <button type="button" class="btn btn-danger btn-block" (click)="cerrarModal()" >Cerrar</button>
         </div>
       </div>
 
