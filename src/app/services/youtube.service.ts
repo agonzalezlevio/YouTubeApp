@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { environment } from '../../environments/enviroments.backup';
+import { cleanSession } from 'selenium-webdriver/safari';
 
 
 
@@ -19,11 +20,16 @@ export class YoutubeService {
 
   getVideos() {
 
-    const parametros = new HttpParams()
+    let  parametros = new HttpParams()
       .set('part', 'snippet')
       .set('maxResults', '10')
       .set('playlistId', this.PLAYLIST_ID)
       .set('key', this.API_KEY);
+
+    if (this.NEXT_PAGE_TOKEN) {
+      parametros = parametros.set('pageToken', this.NEXT_PAGE_TOKEN);
+      console.log(parametros);
+    }
 
     const url = `${this.YOUTUBE_URL}/playlistItems`;
     return this.httpClient.get(url, {params: parametros}).pipe(map( (respuesta: any) => {

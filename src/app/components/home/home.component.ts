@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   public videoSeleccionado: any;
 
   constructor(public youtubeService: YoutubeService) {
-    this.youtubeService.getVideos().subscribe(videos => {this.videos = videos; console.log(videos);});
+    this.youtubeService.getVideos().subscribe(videos => this.videos = videos);
   }
 
   ngOnInit() {
@@ -30,6 +30,10 @@ export class HomeComponent implements OnInit {
   public cerrarModal() {
     this.videoSeleccionado = null;
     $('#myModal').modal('hide');
+  }
+
+  public cargarMas() {
+    this.youtubeService.getVideos().subscribe(videos => this.videos = this.videos.concat(videos));
   }
 
 }
