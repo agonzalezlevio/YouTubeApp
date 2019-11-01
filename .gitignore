@@ -7,6 +7,9 @@
 # Only exists if Bazel was run
 /bazel-out
 
+# credenciales
+/src/environments/enviroments.backup.ts
+
 # dependencies
 /node_modules
 
